@@ -1,0 +1,106 @@
+<!doctype html><html lang=en><head><meta charset=utf-8>
+<meta name=viewport content="width=device-width,initial-scale=1"><title>UGC Studio</title>
+<style>
+:root{--bg:#0a0e13;--card:#141b23;--c2:#0f1722;--ink:#eaf0f6;--mut:#8da2b5;--acc:#22c55e;--acc2:#6fd3ff;--pink:#ec4899;--line:#1f2c38;--warn:#fbbf24}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.55 system-ui,-apple-system,Segoe UI,Roboto}
+header{padding:18px 24px;border-bottom:1px solid var(--line);display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+h1{font-size:18px;margin:0}.sub{color:var(--mut);font-size:13px}
+nav{display:flex;gap:4px;padding:0 16px;border-bottom:1px solid var(--line);position:sticky;top:0;background:var(--bg);z-index:9;flex-wrap:wrap}
+nav button{background:none;border:0;color:var(--mut);padding:13px 15px;cursor:pointer;font-size:14px;border-bottom:2px solid transparent}
+nav button.on{color:var(--ink);border-bottom-color:var(--acc);font-weight:600}
+.wrap{max-width:1180px;margin:0 auto;padding:22px 24px}section{display:none}section.on{display:block}
+.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:14px;margin-bottom:22px}
+.kpi{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px}
+.kpi .n{font-size:26px;font-weight:700}.kpi .n.acc{color:var(--acc)}.kpi .l{color:var(--mut);font-size:12px;margin-top:2px}
+.flow{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:12px}
+.step{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:13px}
+.step .t{font-weight:600;font-size:13px}.step .d{color:var(--mut);font-size:12px;margin-top:5px}
+.tag{display:inline-block;font-size:10px;padding:2px 8px;border-radius:999px;margin-top:8px;border:1px solid var(--line);color:var(--mut)}
+.tag.done{color:var(--acc)}.tag.live{color:var(--acc2)}.tag.input,.tag.next{color:var(--warn)}
+.brandgrid{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+@media(max-width:760px){.brandgrid{grid-template-columns:1fr}}
+.bcard{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:18px}
+.bcard.female{border-top:3px solid var(--pink)}.bcard.male{border-top:3px solid var(--acc2)}
+.bcard h3{margin:0 0 4px}.row{display:flex;justify-content:space-between;gap:10px;padding:8px 0;border-bottom:1px solid var(--line);font-size:13px}
+.row .k{color:var(--mut)}.row .v{text-align:right}
+.chip{display:inline-block;background:var(--c2);border:1px solid var(--line);border-radius:999px;padding:3px 9px;font-size:11px;margin:2px}
+.refbox{margin-top:12px;border:1px dashed var(--line);border-radius:10px;padding:14px;text-align:center;color:var(--mut);font-size:12px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:16px}
+.vcard{background:var(--card);border:1px solid var(--line);border-radius:14px;overflow:hidden;display:flex;flex-direction:column}
+.vcard video{width:100%;aspect-ratio:9/16;object-fit:cover;background:#000}
+.vbody{padding:12px;display:flex;flex-direction:column;gap:7px}
+.badge{font-size:11px;padding:2px 8px;border-radius:999px;background:var(--c2);border:1px solid var(--line)}
+.badge.f{color:var(--pink)}.badge.m{color:var(--acc2)}.badge.ai{color:var(--acc)}
+.note{color:var(--mut);font-size:13px;border:1px dashed var(--line);border-radius:10px;padding:12px 14px;margin:0 0 16px}
+.filter{display:flex;gap:8px;margin-bottom:14px}
+.filter button{background:var(--c2);border:1px solid var(--line);color:var(--ink);border-radius:999px;padding:6px 13px;cursor:pointer;font-size:13px}
+.filter button.on{background:var(--acc);color:#04210f;font-weight:600;border-color:var(--acc)}
+a{color:var(--acc2);word-break:break-all}
+</style></head><body>
+<header><h1>🎬 UGC Studio</h1><span class=sub>2-brand TikTok Shop affiliate engine · AI creators</span>
+<span class=sub style="margin-left:auto" id=hdr></span></header>
+<nav id=nav></nav>
+<div class=wrap>
+  <section id=overview class=on></section>
+  <section id=brands></section>
+  <section id=vault></section>
+  <section id=workflow></section>
+</div>
+<script>
+const D={"brands": [{"id": "female", "label": "Brand A \u2014 Female creator", "tiktok_handle": "@SET_YOUR_FEMALE_HANDLE", "creator": {"name": "TBD (you'll provide)", "reference_image": null, "voice": "female \u2014 Piper en_US-hfc_female (default; swap to a cloned voice later)", "avatar_status": "not set \u2014 provide 5+ creator photos to train a Soul / Marketing Studio avatar"}, "assigned_categories": ["beauty & personal care", "wellness (female-skew)", "home"], "notes": "Run products that convert better with a female UGC creator."}, {"id": "male", "label": "Brand B \u2014 Male creator", "tiktok_handle": "@SET_YOUR_MALE_HANDLE", "creator": {"name": "TBD (you'll provide)", "reference_image": null, "voice": "male \u2014 Piper en_US-ryan (to be added; swap to a cloned voice later)", "avatar_status": "not set \u2014 provide 5+ creator photos to train a Soul / Marketing Studio avatar"}, "assigned_categories": ["fitness & supplements (male-skew)", "tech & gadgets", "tools/outdoor"], "notes": "Run products that convert better with a male UGC creator."}], "vault": [{"brand": "female", "product": "Toplux Moringa 1200mg", "category": "wellness", "model": "Seedance 2.0 (Higgsfield)", "duration": 8, "aspect": "1:1 (next runs 9:16)", "file": "pipeline/out/aigen/moringa_ai_01.mp4", "source": "ai-generated from product photo + competitor-modeled prompt", "product_url": "https://shop.tiktok.com/REPLACE_MORINGA_AFFILIATE_LINK", "status": "raw clip \u2014 needs finishing layer (hook/caption/CTA) + stitch", "created": "2026-06-03", "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3Ebn0yC4it9aRGZRP7iOf76LppD/hf_20260603_034413_c7031cbe-58c0-4baa-98b2-d810b52dc0c6.mp4"}], "steps": [["1 \u00b7 Research", "EchoTik / Kalodata \u2192 viral products across ALL categories", "done"], ["2 \u00b7 Route", "Assign each product to Female or Male brand", "app"], ["3 \u00b7 Creator", "Lock one on-brand creator per brand (avatar + voice)", "input"], ["4 \u00b7 Generate", "Higgsfield image\u2192video, modeled on top converting videos", "live"], ["5 \u00b7 Stitch", "Combine 8s shots into a full video", "build"], ["6 \u00b7 Finish", "Hook/captions/CTA/voice (AI disclosure = post toggle)", "done"], ["7 \u00b7 Vault", "Every clip stored with its product link", "app"], ["8 \u00b7 Autopost", "v2: auto-post to the right account", "next"]]};
+const TABS=[["overview","Overview"],["brands","Brands & Creators"],["vault","Product Vault"],["workflow","Workflow"]];
+document.getElementById('nav').innerHTML=TABS.map(([id,l],i)=>`<button class="${i==0?'on':''}" onclick="tab('${id}',this)">${l}</button>`).join('');
+function tab(id,b){document.querySelectorAll('section').forEach(s=>s.classList.toggle('on',s.id==id));document.querySelectorAll('nav button').forEach(x=>x.classList.remove('on'));b.classList.add('on')}
+function esc(s){return(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;')}
+const ai=D.vault.filter(v=>/Seedance|Kling|Higgsfield/i.test(v.model)).length;
+document.getElementById('hdr').textContent=`${D.vault.length} clips in vault · ${ai} AI-generated`;
+
+document.getElementById('overview').innerHTML=`
+ <div class=kpis>
+  <div class=kpi><div class="n">2</div><div class=l>brands / TikTok accounts</div></div>
+  <div class=kpi><div class="n acc">${ai}</div><div class=l>AI creator videos</div></div>
+  <div class=kpi><div class="n">${D.vault.length}</div><div class=l>total clips in vault</div></div>
+  <div class=kpi><div class="n">8s</div><div class=l>clip length (stitch to extend)</div></div>
+ </div>
+ <h3 style="margin:6px 0 12px">Workflow</h3>
+ <div class=flow>${D.steps.map(s=>`<div class=step><div class=t>${s[0]}</div><div class=d>${s[1]}</div><span class="tag ${s[2]}">${({done:'automated',app:'in app',input:'needs your input',live:'live',build:'building',next:'v2'})[s[2]]}</span></div>`).join('')}</div>
+ <div class=note style="margin-top:18px"><b>Theme lock:</b> each brand runs ONE consistent AI creator (face + voice) so every post matches the account. Format copies the highest-commission, highest-converting videos: selfie hook → POV product demo → CTA.</div>`;
+
+const LS="ugc_brands_v1";const saved=JSON.parse(localStorage.getItem(LS)||"{}");
+function bsave(id,k,val){saved[id]=saved[id]||{};saved[id][k]=val;localStorage.setItem(LS,JSON.stringify(saved))}
+function photo(id,input){const f=input.files[0];if(!f)return;const r=new FileReader();r.onload=e=>{bsave(id,'photo',e.target.result);document.getElementById('pv-'+id).src=e.target.result;document.getElementById('pv-'+id).style.display='block'};r.readAsDataURL(f)}
+document.getElementById('brands').innerHTML=`
+ <div class=note>Each TikTok account = one brand with one locked creator. Type your handle/creator name and add a reference photo — it saves in your browser. <b>Also drop the same photo(s) into this chat or the <code>config/creators/</code> folder</b> so I can train the actual Soul avatar (5+ photos = identity-locked).</div>
+ <div class=brandgrid>${D.brands.map(b=>{const s=saved[b.id]||{};return `<div class="bcard ${b.id}">
+   <h3>${esc(b.label)}</h3>
+   <div class=row><span class=k>TikTok handle</span><span class=v><input value="${esc(s.handle||b.tiktok_handle)}" onchange="bsave('${b.id}','handle',this.value)" style="background:var(--c2);border:1px solid var(--line);color:var(--ink);border-radius:7px;padding:5px 8px;width:170px"></span></div>
+   <div class=row><span class=k>Creator name</span><span class=v><input value="${esc(s.creator||'')}" placeholder="e.g. Mia" onchange="bsave('${b.id}','creator',this.value)" style="background:var(--c2);border:1px solid var(--line);color:var(--ink);border-radius:7px;padding:5px 8px;width:170px"></span></div>
+   <div class=row><span class=k>Voice</span><span class=v>${esc(b.creator.voice)}</span></div>
+   <div class=row><span class=k>Avatar</span><span class=v>${esc(b.creator.avatar_status)}</span></div>
+   <div class=row><span class=k>Categories</span><span class=v>${b.assigned_categories.map(c=>`<span class=chip>${esc(c)}</span>`).join('')}</span></div>
+   <div class=refbox><img id="pv-${b.id}" src="${s.photo||''}" style="display:${s.photo?'block':'none'};max-width:120px;border-radius:8px;margin:0 auto 8px"><br>
+     <label style="cursor:pointer;color:var(--acc2)">📸 Add creator reference photo<input type=file accept=image/* style="display:none" onchange="photo('${b.id}',this)"></label></div>
+ </div>`}).join('')}</div>`;
+
+let vf='all';
+function renderVault(){
+  const items=vf=='all'?D.vault:D.vault.filter(v=>v.brand==vf);
+  document.getElementById('vault').innerHTML=`
+   <div class=note>Every generated clip lands here with its product link. AI clips are the new Higgsfield videos; "demo" clips are the earlier photo-based finishing-layer tests. Post manually for now (AI-disclosure toggle ON); autoposter comes in v2.</div>
+   <div class=filter>${['all','female','male'].map(f=>`<button class="${vf==f?'on':''}" onclick="setVf('${f}')">${f=='all'?'All':f=='female'?'Brand A (F)':'Brand B (M)'}</button>`).join('')}</div>
+   <div class=grid>${items.map(v=>`<div class=vcard>
+     <video src="${v.url||v.video}" controls preload=metadata></video>
+     <div class=vbody>
+       <div><span class="badge ${v.brand=='female'?'f':'m'}">${v.brand=='female'?'Brand A':'Brand B'}</span> <span class="badge ${/Seedance|Kling|Higgsfield/i.test(v.model)?'ai':''}">${esc(v.model)}</span></div>
+       <div style="font-weight:600;font-size:13px">${esc(v.product)}</div>
+       <div class=sub style="font-size:12px">${esc(v.status||'')} · ${v.duration}s · ${esc(v.aspect||'')}</div>
+       <a href="${v.product_url}">${esc(v.product_url||'add link')}</a>
+     </div></div>`).join('')}</div>`;
+}
+function setVf(f){vf=f;renderVault()}
+
+document.getElementById('workflow').innerHTML=`
+ <div class=note>How a post gets made end-to-end.</div>
+ <div class=flow>${D.steps.map(s=>`<div class=step><div class=t>${s[0]}</div><div class=d>${s[1]}</div><span class="tag ${s[2]}">${({done:'automated',app:'in app',input:'needs your input',live:'live',build:'building',next:'v2'})[s[2]]}</span></div>`).join('')}</div>`;
+renderVault();
+</script></body></html>
