@@ -1,104 +1,73 @@
 <!doctype html><html lang=en><head><meta charset=utf-8>
-<meta name=viewport content="width=device-width,initial-scale=1"><title>UGC Studio</title>
+<meta name=viewport content="width=device-width,initial-scale=1"><title>TikTok UGC Video Vault</title>
 <style>
-:root{--bg:#0a0e13;--card:#141b23;--c2:#0f1722;--ink:#eaf0f6;--mut:#8da2b5;--acc:#22c55e;--acc2:#6fd3ff;--pink:#ec4899;--line:#1f2c38;--warn:#fbbf24}
+:root{--bg:#0a0e13;--card:#141b23;--ink:#eaf0f6;--mut:#8da2b5;--acc:#22c55e;--acc2:#6fd3ff;--line:#1f2c38;--warn:#fbbf24}
 *{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.55 system-ui,-apple-system,Segoe UI,Roboto}
-header{padding:18px 24px;border-bottom:1px solid var(--line);display:flex;align-items:center;gap:12px;flex-wrap:wrap}
-h1{font-size:18px;margin:0}.sub{color:var(--mut);font-size:13px}
-nav{display:flex;gap:4px;padding:0 16px;border-bottom:1px solid var(--line);position:sticky;top:0;background:var(--bg);z-index:9;flex-wrap:wrap}
-nav button{background:none;border:0;color:var(--mut);padding:13px 15px;cursor:pointer;font-size:14px;border-bottom:2px solid transparent}
-nav button.on{color:var(--ink);border-bottom-color:var(--acc);font-weight:600}
-.wrap{max-width:1180px;margin:0 auto;padding:22px 24px}section{display:none}section.on{display:block}
+header{padding:20px 24px;border-bottom:1px solid var(--line)}
+h1{font-size:20px;margin:0 0 4px}.sub{color:var(--mut);font-size:13px}
+.wrap{max-width:1240px;margin:0 auto;padding:22px 24px}
 .kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:14px;margin-bottom:22px}
 .kpi{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px}
 .kpi .n{font-size:26px;font-weight:700}.kpi .n.acc{color:var(--acc)}.kpi .l{color:var(--mut);font-size:12px;margin-top:2px}
-.flow{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:12px}
-.step{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:13px}
-.step .t{font-weight:600;font-size:13px}.step .d{color:var(--mut);font-size:12px;margin-top:5px}
-.tag{display:inline-block;font-size:10px;padding:2px 8px;border-radius:999px;margin-top:8px;border:1px solid var(--line);color:var(--mut)}
-.tag.done{color:var(--acc)}.tag.live{color:var(--acc2)}.tag.input,.tag.next{color:var(--warn)}
-.brandgrid{display:grid;grid-template-columns:1fr 1fr;gap:18px}@media(max-width:760px){.brandgrid{grid-template-columns:1fr}}
-.bcard{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:18px}
-.bcard.female{border-top:3px solid var(--pink)}.bcard.male{border-top:3px solid var(--acc2)}
-.bcard h3{margin:0 0 4px}.row{display:flex;justify-content:space-between;gap:10px;padding:8px 0;border-bottom:1px solid var(--line);font-size:13px}
-.row .k{color:var(--mut)}.row .v{text-align:right}.chip{display:inline-block;background:var(--c2);border:1px solid var(--line);border-radius:999px;padding:3px 9px;font-size:11px;margin:2px}
-.refbox{margin-top:12px;border:1px dashed var(--line);border-radius:10px;padding:14px;text-align:center;color:var(--mut);font-size:12px}
-table{width:100%;border-collapse:collapse;font-size:13px}th,td{text-align:left;padding:9px 11px;border-bottom:1px solid var(--line)}th{color:var(--mut);font-weight:600;font-size:12px}
-.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:16px}
-.vcard{background:var(--card);border:1px solid var(--line);border-radius:14px;overflow:hidden;display:flex;flex-direction:column}
-.vcard video{width:100%;aspect-ratio:9/16;object-fit:cover;background:#000}.vbody{padding:12px;display:flex;flex-direction:column;gap:7px}
-.badge{font-size:11px;padding:2px 8px;border-radius:999px;background:var(--c2);border:1px solid var(--line)}.badge.f{color:var(--pink)}.badge.m{color:var(--acc2)}.badge.ai{color:var(--acc)}
-.note{color:var(--mut);font-size:13px;border:1px dashed var(--line);border-radius:10px;padding:12px 14px;margin:0 0 16px}
-.filter{display:flex;gap:8px;margin-bottom:14px;flex-wrap:wrap}
-.filter button{background:var(--c2);border:1px solid var(--line);color:var(--ink);border-radius:999px;padding:6px 13px;cursor:pointer;font-size:13px}
-.filter button.on{background:var(--acc);color:#04210f;font-weight:600;border-color:var(--acc)}
-a{color:var(--acc2);word-break:break-all}input{background:var(--c2);border:1px solid var(--line);color:var(--ink);border-radius:7px;padding:5px 8px}
+.bar{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:18px}
+.bar button{background:var(--card);border:1px solid var(--line);color:var(--mut);padding:8px 14px;border-radius:999px;cursor:pointer;font-size:13px}
+.bar button.on{color:#06140b;background:var(--acc);border-color:var(--acc);font-weight:600}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:18px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:16px;overflow:hidden;display:flex;flex-direction:column}
+.card video{width:100%;aspect-ratio:9/16;background:#000;object-fit:cover;display:block}
+.body{padding:13px 14px 16px}
+.title{font-weight:700;font-size:15px}
+.angle{color:var(--mut);font-size:12px;margin:4px 0 10px;min-height:32px}
+.row{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:10px}
+.chip{font-size:10px;padding:3px 9px;border-radius:999px;border:1px solid var(--line);color:var(--mut)}
+.chip.f{color:var(--acc2)}.chip.m{color:var(--warn)}.chip.r{color:var(--acc);border-color:#1d3a28}
+.link{width:100%;background:#0d141c;border:1px solid var(--line);color:var(--ink);border-radius:8px;padding:8px 10px;font-size:12px;margin-bottom:8px}
+.btns{display:flex;gap:8px}
+.btns a,.btns button{flex:1;text-align:center;text-decoration:none;font-size:12px;padding:8px;border-radius:8px;border:1px solid var(--line);background:#0d141c;color:var(--ink);cursor:pointer}
+.btns a.dl{background:var(--acc);color:#06140b;border-color:var(--acc);font-weight:600}
+.btns a.tt{background:#fe2c55;color:#fff;border-color:#fe2c55;font-weight:600}
+.showcase{display:inline-block;margin-top:8px;background:#fe2c55;color:#fff;text-decoration:none;padding:7px 14px;border-radius:999px;font-size:13px;font-weight:600}
+.note{background:#0d1a12;border:1px solid #1d3a28;border-radius:12px;padding:12px 14px;color:var(--mut);font-size:13px;margin-bottom:20px}
+footer{color:var(--mut);font-size:12px;padding:24px;text-align:center;border-top:1px solid var(--line);margin-top:30px}
 </style></head><body>
-<header><h1>🎬 UGC Studio</h1><span class=sub>2-brand TikTok Shop affiliate engine · AI creators</span>
-<span class=sub style="margin-left:auto" id=hdr></span></header>
-<nav id=nav></nav>
+<header><h1>TikTok UGC Video Vault</h1>
+<div class=sub id=hdr></div>
+<a class=showcase href="https://www.tiktok.com/@offerpreneur" target=_blank>＋ Open my TikTok Showcase (@offerpreneur)</a></header>
 <div class=wrap>
- <section id=overview class=on></section>
- <section id=brands></section>
- <section id=vault></section>
- <section id=workflow></section>
-</div>
-<script>
-const D={"brands": [{"id": "female", "label": "Brand A \u2014 Female creator", "tiktok_handle": "@SET_YOUR_FEMALE_HANDLE", "creator": {"name": "TBD (you'll provide)", "reference_image": null, "voice": "female \u2014 Piper en_US-hfc_female (default; swap to a cloned voice later)", "avatar_status": "not set \u2014 provide 5+ creator photos to train a Soul / Marketing Studio avatar"}, "assigned_categories": ["beauty & personal care", "wellness (female-skew)", "home"], "notes": "Run products that convert better with a female UGC creator."}, {"id": "male", "label": "Brand B \u2014 Male creator", "tiktok_handle": "@SET_YOUR_MALE_HANDLE", "creator": {"name": "TBD (you'll provide)", "reference_image": null, "voice": "male \u2014 Piper en_US-ryan (to be added; swap to a cloned voice later)", "avatar_status": "not set \u2014 provide 5+ creator photos to train a Soul / Marketing Studio avatar"}, "assigned_categories": ["fitness & supplements (male-skew)", "tech & gadgets", "tools/outdoor"], "notes": "Run products that convert better with a male UGC creator."}], "feed": {"updated": "2026-06-03", "products": [{"name": "Toplux Moringa 1200mg", "cat": "wellness", "price": 17.97, "sold": "22.9k", "rev": "$330k", "growth": "+145%", "product_link": "https://shop.tiktok.com/ADD_MORINGA_PRODUCT_LINK"}, {"name": "Magnesium Complex 1000mg", "cat": "wellness", "price": 49.97, "sold": "30.2k", "rev": "$444k", "growth": "+50%", "product_link": "https://shop.tiktok.com/ADD_MAGNESIUM_PRODUCT_LINK"}, {"name": "Toplux Beet Root 2040mg", "cat": "wellness", "price": 16.97, "sold": "18.3k", "rev": "$290k", "growth": "+9%", "product_link": "https://shop.tiktok.com/ADD_BEETROOT_PRODUCT_LINK"}, {"name": "Hustle Butter Tattoo Balm", "cat": "tattoo", "price": 40.0, "sold": "15.4k", "rev": "$230k", "growth": "+23%", "product_link": "https://shop.tiktok.com/ADD_HUSTLEBUTTER_PRODUCT_LINK"}, {"name": "Keto Burn Supplement", "cat": "weight", "price": 21.97, "sold": "33.8k", "rev": "$506k", "growth": "+24%", "product_link": "https://shop.tiktok.com/ADD_KETO_PRODUCT_LINK"}, {"name": "Feminine Balance Gummies", "cat": "womens", "price": 39.99, "sold": "11.5k", "rev": "$267k", "growth": "+3%", "product_link": "https://shop.tiktok.com/ADD_FEMBALANCE_PRODUCT_LINK"}, {"name": "Kind Patches Metabolic Trio", "cat": "wellness", "price": 45.0, "sold": "7.5k", "rev": "$193k", "growth": "+6%", "product_link": "https://shop.tiktok.com/ADD_KINDPATCH_PRODUCT_LINK"}], "top_videos": [{"product": "Moringa", "hook": "(selfie, outdoors)", "len": "1m17s", "rev": "$39.2k", "views": "1.14M", "format": "talking-head testimonial"}, {"product": "Moringa", "hook": "Solo escucha (Just listen)", "len": "1m19s", "rev": "$35.0k", "views": "970k", "format": "selfie talking to camera"}, {"product": "Moringa", "hook": "Just listen", "len": "1m36s", "rev": "$25.9k", "views": "809k", "format": "selfie talking to camera"}, {"product": "Moringa", "hook": "Escucha bien (Listen carefully)", "len": "1m42s", "rev": "$12.5k", "views": "498k", "format": "two-person testimonial"}]}, "gen": [{"brand": "female", "product": "Toplux Moringa 1200mg", "category": "wellness", "model": "Seedance 2.0 (Higgsfield)", "duration": 8, "aspect": "1:1 (next runs 9:16)", "file": "pipeline/out/aigen/moringa_ai_01.mp4", "source": "ai-generated from product photo + competitor-modeled prompt", "product_url": "https://shop.tiktok.com/REPLACE_MORINGA_AFFILIATE_LINK", "status": "raw clip \u2014 needs finishing layer (hook/caption/CTA) + stitch", "created": "2026-06-03", "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3Ebn0yC4it9aRGZRP7iOf76LppD/hf_20260603_034413_c7031cbe-58c0-4baa-98b2-d810b52dc0c6.mp4"}], "steps": [["1 \u00b7 Research", "Pull hundreds of best-selling products daily (EchoTik / Kalodata)", "app"], ["2 \u00b7 Top videos", "Save the top converting videos per product as the format blueprint", "app"], ["3 \u00b7 Creator", "Lock one on-brand AI creator per brand (avatar + voice)", "input"], ["4 \u00b7 Generate", "Copy the winning video format shot-for-shot with our product", "live"], ["5 \u00b7 Stitch", "Combine 8s shots into the full-length video", "build"], ["6 \u00b7 Finish", "Captions/CTA/voice (AI disclosure = post toggle, not on-video)", "done"], ["7 \u00b7 Vault", "Store products, top videos, and our generated clips", "app"], ["8 \u00b7 Post", "Add the product link manually + post; autoposter in v2", "next"]]};
-const TABS=[["overview","Overview"],["brands","Brands & Creators"],["vault","Video Vault"],["workflow","Workflow"]];
-document.getElementById('nav').innerHTML=TABS.map(([id,l],i)=>`<button class="${i==0?'on':''}" onclick="tab('${id}',this)">${l}</button>`).join('');
-function tab(id,b){document.querySelectorAll('section').forEach(s=>s.classList.toggle('on',s.id==id));document.querySelectorAll('nav button').forEach(x=>x.classList.remove('on'));b.classList.add('on')}
-function esc(s){return(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;')}
-document.getElementById('hdr').textContent=`${D.feed.products.length} products · ${D.feed.top_videos.length} top videos · ${D.gen.length} generated`;
-
-document.getElementById('overview').innerHTML=`
  <div class=kpis>
-  <div class=kpi><div class=n>2</div><div class=l>brands / TikTok accounts</div></div>
-  <div class=kpi><div class=n acc>${D.feed.products.length}</div><div class=l>best-sellers (today)</div></div>
-  <div class=kpi><div class=n>${D.feed.top_videos.length}</div><div class=l>top converting videos</div></div>
-  <div class=kpi><div class=n acc>${D.gen.length}</div><div class=l>generated clips</div></div>
+  <div class=kpi><div class="n acc" id=k1>0</div><div class=l>videos ready to post</div></div>
+  <div class=kpi><div class=n id=k2>0</div><div class=l>products covered</div></div>
+  <div class=kpi><div class=n id=k3>0</div><div class=l>niches</div></div>
+  <div class=kpi><div class=n acc>AI talking actors</div><div class=l>lip-synced, real product in CTA</div></div>
  </div>
- <h3 style="margin:6px 0 12px">Workflow</h3>
- <div class=flow>${D.steps.map(s=>`<div class=step><div class=t>${s[0]}</div><div class=d>${s[1]}</div><span class="tag ${s[2]}">${({done:'automated',app:'in app',input:'needs your input',live:'live',next:'v2'})[s[2]]}</span></div>`).join('')}</div>
- <div class=note style="margin-top:18px"><b>Format rule:</b> we copy the top converting video's format <i>shot-for-shot</i> — the top 3 per product use the same structure (talking-head testimonial → product hold → CTA). Same format, our product + on-brand creator.</div>`;
-
-document.getElementById('brands').innerHTML=`
- <div class=note>Each TikTok account = one brand + one locked creator. Add your handle/creator name and a reference photo (saves in your browser). Also drop the photo into this chat / <code>config/creators/</code> so I can train the avatar.</div>
- <div class=brandgrid>${D.brands.map(b=>`<div class="bcard ${b.id}">
-   <h3>${esc(b.label)}</h3>
-   <div class=row><span class=k>TikTok handle</span><span class=v>${esc(b.tiktok_handle)}</span></div>
-   <div class=row><span class=k>Voice</span><span class=v>${esc(b.creator.voice)}</span></div>
-   <div class=row><span class=k>Avatar</span><span class=v>${esc(b.creator.avatar_status)}</span></div>
-   <div class=row><span class=k>Categories</span><span class=v>${b.assigned_categories.map(c=>`<span class=chip>${esc(c)}</span>`).join('')}</span></div>
-   <div class=refbox>📸 Creator reference photo — provide via chat (1 = avatar, 5+ = locked Soul)</div>
- </div>`).join('')}</div>`;
-
-let vf='products';
-function renderVault(){
-  let body='';
-  if(vf=='products'){
-    body=`<div class=note>Hundreds of best-selling products pulled daily from the sources. The <b>product link</b> is added manually to each video at post time.</div>
-    <table><tr><th>Product</th><th>Category</th><th>Price</th><th>Sold</th><th>30d Rev</th><th>Growth</th><th>Product link</th></tr>
-    ${D.feed.products.map(p=>`<tr><td>${esc(p.name)}</td><td>${esc(p.cat)}</td><td>$${p.price}</td><td>${p.sold}</td><td>${p.rev}</td><td>${p.growth}</td><td><a href="${p.product_link}">link</a></td></tr>`).join('')}</table>`;
-  } else if(vf=='top'){
-    body=`<div class=note>Top converting videos per product — our format blueprint. We copy these shot-for-shot.</div>
-    <table><tr><th>Product</th><th>Hook</th><th>Length</th><th>Views</th><th>Revenue</th><th>Format</th></tr>
-    ${D.feed.top_videos.map(v=>`<tr><td>${esc(v.product)}</td><td>${esc(v.hook)}</td><td>${v.len}</td><td>${v.views}</td><td>${v.rev}</td><td>${esc(v.format)}</td></tr>`).join('')}</table>`;
-  } else {
-    body=`<div class=note>Our AI-generated clips, ready to post.</div>
-    <div class=grid>${D.gen.map(v=>`<div class=vcard><video src="${v.url||v.video}" controls preload=metadata></video>
-      <div class=vbody><div><span class="badge ${v.brand=='female'?'f':'m'}">${v.brand=='female'?'Brand A':'Brand B'}</span> <span class="badge ai">${esc(v.model)}</span></div>
-      <div style="font-weight:600;font-size:13px">${esc(v.product)}</div><div class=sub style="font-size:12px">${esc(v.status||'')}</div></div></div>`).join('')||'<p class=sub>No generated clips yet.</p>'}</div>`;
-  }
-  document.getElementById('vault').innerHTML=`
-   <div class=filter>
-     <button class="${vf=='products'?'on':''}" onclick="setVf('products')">Best-selling products</button>
-     <button class="${vf=='top'?'on':''}" onclick="setVf('top')">Top converting videos</button>
-     <button class="${vf=='gen'?'on':''}" onclick="setVf('gen')">Generated clips</button>
-   </div>${body}`;
+ <div class=note>Each video = relatable selfie hook → in-scene talking expert → CTA holding the real product. <b>To post:</b> download, paste your TikTok Shop affiliate link in the field on each card for your records, upload to TikTok, and toggle the <b>AI-generated content</b> disclosure at post time.</div>
+ <div class=bar id=bar></div>
+ <div class=grid id=grid></div>
+</div>
+<footer>Generated by your AI UGC pipeline · videos stream from CDN · regenerate daily to keep the vault fresh</footer>
+<script>
+const V=[{"id": "f37d7d8a-22c9-4571-b4ef-855df02f314f", "product": "Keto Burn", "niche": "Weight", "angle": "Close-up first-person testimonial (matched the $506k #1 format)", "creator": "Female", "len": "14s", "matched": 1, "rev": "$506k", "url": "https://d2ol7oe51mr4n9.cloudfront.net/user_3Ebn0yC4it9aRGZRP7iOf76LppD/f37d7d8a-22c9-4571-b4ef-855df02f314f.mp4"}, {"id": "7fb5b7b4-fa60-497a-b11e-185a4fb27e51", "product": "Magnesium Complex", "niche": "Sleep", "angle": "Short cortisol/glow-up testimonial (matched the 9-17s #1 format)", "creator": "Female", "len": "14s", "matched": 1, "rev": "$444k", "url": "https://d2ol7oe51mr4n9.cloudfront.net/user_3Ebn0yC4it9aRGZRP7iOf76LppD/7fb5b7b4-fa60-497a-b11e-185a4fb27e51.mp4"}, {"id": "fc1ac78f-c7c1-4067-a52e-291e18999865", "product": "JiYu Korean Skincare", "niche": "Beauty", "angle": "Glassy-skin glow-up + bundle deal (matched skincare haul format)", "creator": "Female", "len": "14s", "matched": 1, "rev": "$325k", "url": "https://d2ol7oe51mr4n9.cloudfront.net/user_3Ebn0yC4it9aRGZRP7iOf76LppD/fc1ac78f-c7c1-4067-a52e-291e18999865.mp4"}, {"id": "9f76894a-4237-4004-a930-a3ba0f84630f", "product": "Beet Root", "niche": "Energy", "angle": "In-car \u274c/\u2705 talking-head (matched the comparison format)", "creator": "Female", "len": "14s", "matched": 1, "rev": "$290k", "url": "https://d2ol7oe51mr4n9.cloudfront.net/user_3Ebn0yC4it9aRGZRP7iOf76LppD/9f76894a-4237-4004-a930-a3ba0f84630f.mp4"}, {"id": "e90be917-fc21-4ada-9143-cd16e10464c2", "product": "Toplux Moringa 1200mg", "niche": "Wellness", "angle": "Cortisol / energy \u2014 selfie before/after + expert (template = real #1 format)", "creator": "Female", "len": "~60s", "matched": 1, "rev": "$330k", "url": "https://d2ol7oe51mr4n9.cloudfront.net/user_3Ebn0yC4it9aRGZRP7iOf76LppD/e90be917-fc21-4ada-9143-cd16e10464c2.mp4"}, {"id": "212e9e2a-6b5b-4ab7-b68c-7496febd13e9", "product": "Hustle Butter", "niche": "Tattoo care", "angle": "Tattoo aftercare \u2014 artist authority", "creator": "Male", "len": "24s", "url": "https://d2ol7oe51mr4n9.cloudfront.net/user_3Ebn0yC4it9aRGZRP7iOf76LppD/212e9e2a-6b5b-4ab7-b68c-7496febd13e9.mp4"}, {"id": "08ba1bc2-4e97-447d-944a-9d89f0415579", "product": "Sea Moss Gel", "niche": "Immunity", "angle": "Immune / 92 minerals / energy", "creator": "Female", "len": "24s", "url": "https://d2ol7oe51mr4n9.cloudfront.net/user_3Ebn0yC4it9aRGZRP7iOf76LppD/08ba1bc2-4e97-447d-944a-9d89f0415579.mp4"}, {"id": "7c0073a3-3e31-4a1d-89db-d4dd54c7b3b8", "product": "Ashwagandha", "niche": "Stress", "angle": "Stress / calm / cortisol", "creator": "Female", "len": "24s", "url": "https://d2ol7oe51mr4n9.cloudfront.net/user_3Ebn0yC4it9aRGZRP7iOf76LppD/7c0073a3-3e31-4a1d-89db-d4dd54c7b3b8.mp4"}, {"id": "7456e44f-5ff0-4f29-98cf-7f99a06743ba", "product": "Collagen Peptides", "niche": "Beauty", "angle": "Skin / hair / joints after 40", "creator": "Female", "len": "24s", "url": "https://d2ol7oe51mr4n9.cloudfront.net/user_3Ebn0yC4it9aRGZRP7iOf76LppD/7456e44f-5ff0-4f29-98cf-7f99a06743ba.mp4"}, {"id": "f2ded7fd-046e-4772-a974-8a5382d6294e", "product": "Lion's Mane", "niche": "Focus", "angle": "Brain fog / focus / memory", "creator": "Male", "len": "24s", "url": "https://d2ol7oe51mr4n9.cloudfront.net/user_3Ebn0yC4it9aRGZRP7iOf76LppD/f2ded7fd-046e-4772-a974-8a5382d6294e.mp4"}, {"id": "2d6b5f12-03d0-4382-90f3-e5251f1d28f2", "product": "Turmeric Curcumin", "niche": "Joints", "angle": "Joint / inflammation", "creator": "Female", "len": "24s", "url": "https://d2ol7oe51mr4n9.cloudfront.net/user_3Ebn0yC4it9aRGZRP7iOf76LppD/2d6b5f12-03d0-4382-90f3-e5251f1d28f2.mp4"}, {"id": "3ae6dec7-e7e7-4157-a658-aa37e88a3eb0", "product": "ACV Gummies", "niche": "Digestion", "angle": "Bloat / digestion / cravings", "creator": "Female", "len": "24s", "url": "https://d2ol7oe51mr4n9.cloudfront.net/user_3Ebn0yC4it9aRGZRP7iOf76LppD/3ae6dec7-e7e7-4157-a658-aa37e88a3eb0.mp4"}];
+const esc=s=>(s||'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+document.getElementById('k1').textContent=V.length;
+document.getElementById('k2').textContent=new Set(V.map(v=>v.product)).size;
+const niches=[...new Set(V.map(v=>v.niche))];
+document.getElementById('k3').textContent=niches.length;
+document.getElementById('hdr').textContent=V.length+' AI-generated UGC videos · '+niches.length+' niches · updated '+new Date().toISOString().slice(0,10);
+let filter='All';
+const bar=document.getElementById('bar');
+['All',...niches].forEach(n=>{const b=document.createElement('button');b.textContent=n;b.className=n==filter?'on':'';b.onclick=()=>{filter=n;render();[...bar.children].forEach(c=>c.className=c.textContent==n?'on':'');};bar.appendChild(b);});
+function render(){
+ const g=document.getElementById('grid');
+ const items=V.filter(v=>filter=='All'||v.niche==filter);
+ g.innerHTML=items.map(v=>`<div class=card>
+   <video src="${v.url}" controls preload=metadata playsinline></video>
+   <div class=body>
+    <div class=title>${esc(v.product)}</div>
+    <div class=angle>${esc(v.angle)}</div>
+    <div class=row>${v.matched?'<span class="chip r">★ Format-matched</span>':''}${v.rev?`<span class=chip>${esc(v.rev)}/mo</span>`:''}<span class="chip ${v.creator=='Male'?'m':'f'}">${esc(v.creator)}</span><span class=chip>${esc(v.niche)}</span><span class=chip>${esc(v.len)}</span></div>
+    <input class=link placeholder="Paste TikTok Shop affiliate link…">
+    <div class=btns><a class=dl href="${v.url}" download="${esc(v.product)}.mp4">Download</a><a class=tt href="https://www.tiktok.com/@offerpreneur" target=_blank>＋ Showcase</a></div>
+   </div></div>`).join('');
 }
-function setVf(f){vf=f;renderVault()}
-document.getElementById('workflow').innerHTML=`<div class=note>How a post gets made.</div>
- <div class=flow>${D.steps.map(s=>`<div class=step><div class=t>${s[0]}</div><div class=d>${s[1]}</div><span class="tag ${s[2]}">${({done:'automated',app:'in app',input:'needs your input',live:'live',next:'v2'})[s[2]]}</span></div>`).join('')}</div>`;
-renderVault();
+render();
 </script></body></html>
